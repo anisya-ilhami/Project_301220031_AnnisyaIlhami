@@ -82,7 +82,7 @@
                 <i class="bi bi-tags"></i>
                 <span>Kelola Kategori</span>
             </a>
-            <a href="#" class="admin-card">
+            <a href="<?php echo site_url('banner'); ?>" class="admin-card">
                 <i class="bi bi-image"></i>
                 <span>Kelola Banner</span>
             </a>
