@@ -43,7 +43,7 @@ class Auth extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('auth/login');
         } else {
-            $email = $this->input->post('email', true);
+            $email = strtolower(trim($this->input->post('email', true)));
             $password = $this->input->post('password', true);
             $user = $this->User_model->get_user_by_email($email);
             if ($user) {
