@@ -86,7 +86,7 @@
                 <i class="bi bi-image"></i>
                 <span>Kelola Banner</span>
             </a>
-            <a href="#" class="admin-card">
+            <a href="<?php echo site_url('pesanan'); ?>" class="admin-card">
                 <i class="bi bi-cart-check"></i>
                 <span>Kelola Pesanan</span>
             </a>
