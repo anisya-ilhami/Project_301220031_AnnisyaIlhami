@@ -90,7 +90,7 @@
                 <i class="bi bi-cart-check"></i>
                 <span>Kelola Pesanan</span>
             </a>
-            <a href="#" class="admin-card">
+            <a href="<?php echo site_url('pesanan/konfirmasi_pembayaran'); ?>" class="admin-card">
                 <i class="bi bi-cash-coin"></i>
                 <span>Konfirmasi Pembayaran</span>
             </a>

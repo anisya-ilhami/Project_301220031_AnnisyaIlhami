@@ -31,4 +31,16 @@ class Pesanan extends CI_Controller {
         $this->Pesanan_model->delete($id);
         redirect('pesanan');
     }
+
+    public function konfirmasi_pembayaran()
+    {
+        $data['konfirmasi'] = $this->Konfirmasi_model->get_all();
+        $this->load->view('admin/konfirmasi_pembayaran', $data);
+    }
+
+    public function konfirmasi_pesanan($id)
+    {
+        $this->Pesanan_model->update_status($id, 'selesai');
+        redirect('pesanan');
+    }
 } 
