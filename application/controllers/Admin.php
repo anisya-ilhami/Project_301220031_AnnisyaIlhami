@@ -16,4 +16,10 @@ class Admin extends CI_Controller {
     {
         $this->load->view('admin/dashboard');
     }
+
+    public function to_user_dashboard()
+    {
+        $this->session->set_userdata('level', 'user');
+        redirect('user/home');
+    }
 } 
