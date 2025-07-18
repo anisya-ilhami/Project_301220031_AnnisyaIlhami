@@ -9,6 +9,7 @@ class User_model extends CI_Model {
 
     public function get_user_by_email($email)
     {
-        return $this->db->get_where('user', ['email' => $email])->row_array();
+        $this->db->where('LOWER(email)', strtolower($email));
+        return $this->db->get('user')->row_array();
     }
 } 
