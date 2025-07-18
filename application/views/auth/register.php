@@ -63,7 +63,7 @@
             <button type="submit" class="btn btn-orange btn-block">Daftar</button>
         </form>
         <div class="mt-3 text-center">
-            Sudah punya akun? <a href="#" style="color:#ffa500;">Login</a>
+            Sudah punya akun? <a href="<?php echo site_url('auth/login'); ?>" style="color:#ffa500;">Login</a>
         </div>
     </div>
 </body>

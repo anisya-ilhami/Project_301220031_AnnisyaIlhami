@@ -7,6 +7,7 @@ class Auth extends CI_Controller {
         parent::__construct();
         $this->load->model('User_model');
         $this->load->library('form_validation');
+        $this->load->library('session');
     }
 
     public function register()
@@ -30,6 +31,42 @@ class Auth extends CI_Controller {
             $this->User_model->insert_user($data);
             $this->session->set_flashdata('success', 'Registrasi berhasil! Silakan login.');
             redirect('auth/register');
+        }
+    }
+
+    public function login()
+    {
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('auth/login');
+        } else {
+            $email = $this->input->post('email', true);
+            $password = $this->input->post('password', true);
+            $user = $this->User_model->get_user_by_email($email);
+            if ($user) {
+                if ($user['status'] == 'on' && password_verify($password, $user['password'])) {
+                    $data = [
+                        'user_id' => $user['user_id'],
+                        'nama' => $user['nama'],
+                        'email' => $user['email'],
+                        'level' => $user['level']
+                    ];
+                    $this->session->set_userdata($data);
+                    if ($user['level'] == 'admin') {
+                        redirect('admin/dashboard');
+                    } else {
+                        redirect('user/home');
+                    }
+                } else {
+                    $this->session->set_flashdata('error', 'Password salah atau akun tidak aktif!');
+                    redirect('auth/login');
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Email tidak terdaftar!');
+                redirect('auth/login');
+            }
         }
     }
 } 
