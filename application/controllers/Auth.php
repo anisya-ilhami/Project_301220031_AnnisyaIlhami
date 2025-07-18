@@ -12,8 +12,9 @@ class Auth extends CI_Controller {
 
     public function register()
     {
+        $this->form_validation->set_message('is_unique', 'Email sudah terdaftar, silakan gunakan email lain.');
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
         $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'required|matches[password]');
 
