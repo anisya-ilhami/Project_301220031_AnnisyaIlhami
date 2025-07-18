@@ -78,7 +78,7 @@
                 <i class="bi bi-box-seam"></i>
                 <span>Kelola Produk</span>
             </a>
-            <a href="#" class="admin-card">
+            <a href="<?php echo site_url('kategori'); ?>" class="admin-card">
                 <i class="bi bi-tags"></i>
                 <span>Kelola Kategori</span>
             </a>
